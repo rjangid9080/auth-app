@@ -21,7 +21,7 @@ export const POST = async (req) => {
 
     return NextResponse.json(
       {
-        message: "Reset Link has been sent Successfully on your Email.",
+        message: "Reset Link has been sent on your Email.",
         success: true,
       },
       { status: 200 }

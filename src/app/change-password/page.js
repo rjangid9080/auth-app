@@ -9,6 +9,11 @@ import toast, { Toaster } from "react-hot-toast";
 
 const ChangePassword = () => {
   const router = useRouter();
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
   const onChangePassword = async () => {
     if (user.password === user.confirmPassword) {
       const response = await axios.post("/api/users/update-password", user);
@@ -33,10 +38,10 @@ const ChangePassword = () => {
         });
 
         if (response.status === 200 && response.data.success) {
-          //setIsEmailInputOpen(false);
+          setUser({ ...user, email: response.data.email });
         } else {
           toast.error(response.data.error);
-          //setIsEmailInputOpen(true);
+          router.push("/login");
         }
       }
     };
