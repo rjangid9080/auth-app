@@ -15,7 +15,7 @@ export const POST = async (req) => {
       console.log(user);
       if (!user) {
         return NextResponse.json({
-          error: "Reset Token Expired",
+          error: "Invalid Reset Token or Expired",
           success: false,
         });
       }
