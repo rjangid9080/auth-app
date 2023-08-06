@@ -14,8 +14,8 @@ const ChangePassword = () => {
     confirmPassword: "",
   });
 
-  const [canChange, setCanChange] = useState(false);
-  
+  const [isVaildToken, setIsVaildToken] = useState(false);
+
   const onChangePassword = async () => {
     if (user.password === user.confirmPassword) {
       const response = await axios.post("/api/users/update-password", user);
@@ -41,7 +41,7 @@ const ChangePassword = () => {
 
         if (response.status === 200 && response.data.success) {
           setUser({ ...user, email: response.data.email });
-          setCanChange(true);
+          setIsVaildToken(true);
         } else {
           toast.error(response.data.error);
           router.push("/login");
@@ -56,7 +56,7 @@ const ChangePassword = () => {
   return (
     <div className="bg-grey-lighter min-h-screen flex flex-col">
       <Toaster position="top-center" reverseOrder={true} />
-      {canChange && (
+      {isVaildToken && (
         <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
           <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
             <h1 className="mb-8 text-3xl text-center">Change Password</h1>

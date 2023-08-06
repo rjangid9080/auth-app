@@ -15,13 +15,13 @@ export const POST = async (req) => {
       console.log(user);
       if (!user) {
         return NextResponse.json({
-          error: "Invalid Reset Token or Expired",
+          error: "Invalid Token or Expired",
           success: false,
         });
       }
-      // user.forgotPasswordToken = undefined;
-      // user.forgotPasswordTokenExpiry = undefined;
-      // await user.save();
+      //user.forgotPasswordToken = undefined;
+      //user.forgotPasswordTokenExpiry = undefined;
+      //await user.save();
 
       return NextResponse.json({
         message: "Reset Token Verified",
@@ -36,7 +36,7 @@ export const POST = async (req) => {
 
       if (!user) {
         return NextResponse.json({
-          error: "Verify Token Expired",
+          error: "Invalid Token or Expired",
           success: false,
         });
       }
